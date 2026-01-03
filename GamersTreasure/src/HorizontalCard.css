@@ -1,17 +1,45 @@
 .horizontal-card {
     display: flex;
-    border: 1px solid #ccc;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
+    justify-content: space-between;
+    border-radius: 10px;
     overflow: hidden;
-    width: 100vw;
-    margin: 20px auto;
+    width: 90%;
+    height: 220px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    background-color: #18181b;
+    color: white;
+    margin: 20px 0;
 }
 
 img {
-    width: 300px;
-    height: 200px;
+    position: relative;
+    width: 380px;
+    height: 220px;
     object-fit: cover;
+    border-radius: 10px;
+    
 }
+.card-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 20px;
+    text-align: left;
+}
+.card-heading h2 {
+    font-size: 3rem;
+    text-shadow: 0 0 10px black;
+    margin: 0;
+}
+.card-heading p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px black;
+}
+.horizontal-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0px 16px #ff0055;
+} 

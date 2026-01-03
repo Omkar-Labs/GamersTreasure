@@ -1,12 +1,35 @@
 import "./backgroundImage.css"
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(useGSAP,ScrollTrigger);
 
 export default function BackgroundImage() {
-    return (
-        <div >
-            <img className="background-image" src="https://d32qys9a6wm9no.cloudfront.net/images/movies/backdrop/86/dd5eab966378306150f1797b9611a33c_1280x720.jpg?t=1641882665" alt="#" />
-            <h1>Gamer's Treasure</h1>
-            <h1>Geners</h1>
+    const img = useRef(null);
 
+    useGSAP(() => {
+        gsap.to(img.current, {
+            backgroundColor: "#facc15",
+            scale: 1.2,
+            filter: "blur(10px)",
+            scrollTrigger: {
+                trigger: document.body,
+                start: "top top",
+                end: "bottom bottom",
+                toggleActions: "play reverse play reverse",
+                scrub: true,
+            }
+    })});
+    return (
+
+        <div className="background-image" ref={img} >
+            <h1 className="title-text">
+                Gamers Treasure
+            </h1>
         </div>
+
     )
 }
