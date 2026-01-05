@@ -1,0 +1,65 @@
+
+.get-started-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 220px;
+    background-color: #09090b;
+    margin: 0;
+}
+.get-started-container button {
+    position: relative;
+    transform: translateX(-60vw);
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #059669;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.get-started-container button:hover {
+    box-shadow: 0 0 40px #ff0055;
+}
+.get-started-container button:active {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+.btn-animate {
+    display: inline-block;
+    overflow: hidden;
+    
+    animation: btn-animation 2.5s 0.5ms 1 ease-in-out forwards;
+}
+.btn-reverse-animate {
+    display: inline-block;
+    overflow: hidden;
+    
+    animation: btn-reverse-animation 2s 1 ease-in-out forwards;
+}
+
+@keyframes btn-animation {
+    to{
+        transform: translateX(0%);
+        opacity: 1;
+        scale: 1;
+    }
+    from{
+        transform: translateX(-60vw);
+        opacity: 0;
+        scale: 0.1;
+    }
+    
+}
+@keyframes btn-reverse-animation {
+    to{
+        transform: translateX(-60vw);
+        opacity: 0;
+    }
+    from{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+}

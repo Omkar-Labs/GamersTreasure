@@ -9,18 +9,20 @@ gsap.registerPlugin(useGSAP,ScrollTrigger);
 
 export default function BackgroundImage() {
     const img = useRef(null);
-
+    
     useGSAP(() => {
         gsap.to(img.current, {
             backgroundColor: "#facc15",
-            scale: 1.2,
+            scale: 1.5,
             filter: "blur(10px)",
             scrollTrigger: {
                 trigger: document.body,
-                start: "top top",
+
+                start: "top 80%",
                 end: "bottom bottom",
                 toggleActions: "play reverse play reverse",
                 scrub: true,
+                
             }
     })});
     return (

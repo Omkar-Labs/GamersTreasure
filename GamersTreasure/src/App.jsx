@@ -2,6 +2,7 @@
 import "./App.css";
 import HorizontalCard from "./HorizontalCard.jsx";
 import BackgroundImage from "./backgroundImage.jsx";
+import GetStarted from "./GetStarted.jsx";
 
 export default function App() {
     const cardsData = [{
@@ -29,6 +30,7 @@ export default function App() {
             <HorizontalCard card={cardsData[1]} reverse={true} />
             <HorizontalCard card={cardsData[2]} />
             <HorizontalCard card={cardsData[3]} reverse={true} />
+            <GetStarted />
         </>
     )
 }
