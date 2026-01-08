@@ -21,7 +21,7 @@ export default function BackgroundImage() {
                 start: "top 80%",
                 end: "bottom bottom",
                 toggleActions: "play reverse play reverse",
-                scrub: true,
+                scrub: 3,
                 
             }
     })});

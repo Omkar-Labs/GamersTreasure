@@ -6,7 +6,7 @@
     
     width: 100%;
     height: 100vh;
-    background-image: url("./assets/bgimg.png");
+    background-image: url("src/assets/bgimg.png");
     background-size: cover;
     background-position: center;
     z-index: -1;

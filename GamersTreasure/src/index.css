@@ -1,12 +1,19 @@
-:root{
+:root {
     --primary-color: #00f2ea;
     --secondary-color: #ff0055;
     --text-color: #ffffff;
     --background-color: #09090b;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+}
+
+#pop-up {
+    
+    
+    background-color: transparent;
 }

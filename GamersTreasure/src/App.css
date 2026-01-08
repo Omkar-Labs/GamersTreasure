@@ -1,23 +1,10 @@
 
 #root{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 100vh;
+  
   min-height: 100vh;
-  gap: 3em ;
+  font-size: calc(10px + 2vmin);
   background-color: transparent;
   color: white;
-  /* margin-left: 10px;
-  margin-right: 10px;
-   */
+  
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
