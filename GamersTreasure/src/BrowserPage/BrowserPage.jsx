@@ -16,7 +16,7 @@ export default function BrowserPage() {
     useEffect(() => {
         const getGames = async () => {
             try {
-                const res = await fetch("https://api.rawg.io/api/games?key=195833dadfd640b78741a7196ea7286f&offset=0&limit=4");
+                const res = await fetch("https://api.rawg.io/api/games?key=Your_API_Key&offset=0&limit=4");
                 const data = await res.json();
                 setGame(data.results);     // <-- return the results
             } catch (err) {
@@ -30,7 +30,7 @@ export default function BrowserPage() {
     }, []);
 
     const handlePopupOpen = (id) => {
-        const url = `https://api.rawg.io/api/games/${id}?key=195833dadfd640b78741a7196ea7286f`;
+        const url = `https://api.rawg.io/api/games/${id}?key=Your_API_Key`;
         const getIndiGames = async () => {
             try {
                 const res = await fetch(url);
