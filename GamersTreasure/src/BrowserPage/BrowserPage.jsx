@@ -2,39 +2,74 @@
 import Header from "./Header";
 import GameCard from "./GameCard";
 import PopUp from "./PopUp";
-import { use, useEffect, useState } from "react";
-import {useGSAP} from "@gsap/react";
-import { gsap } from "gsap";
+import { useEffect, useState } from "react";
+
 import "./BrowserPage.css";
+
 export default function BrowserPage() {
     const [isOpen, setIsOpen] = useState(false);
-   
-    const handlePopupOpen = () => {
-        setIsOpen(true);
-         
+    const [game, setGame] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [getIndiGame, setGetIndiGame] = useState({});
+
+
+    useEffect(() => {
+        const getGames = async () => {
+            try {
+                const res = await fetch("https://api.rawg.io/api/games?key=195833dadfd640b78741a7196ea7286f&offset=0&limit=4");
+                const data = await res.json();
+                setGame(data.results);     // <-- return the results
+            } catch (err) {
+                console.log(err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        getGames()
+
+    }, []);
+
+    const handlePopupOpen = (id) => {
+        const url = `https://api.rawg.io/api/games/${id}?key=195833dadfd640b78741a7196ea7286f`;
+        const getIndiGames = async () => {
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                setGetIndiGame(data);    // <-- return the results
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getIndiGames()
+            .then(() => {
+                setIsOpen(true);
+            })
     }
     const handlePopupClose = () => {
-        setTimeout(() => {
-            setIsOpen(false);
-        }, 1000);
+
+        setIsOpen(false);
+
     }
-    const game = {
-        image: "https://upload.wikimedia.org/wikipedia/en/f/f1/TombRaider2013.jpg",
-        title: "Tomb Raider",
-        genre: "Action RPG"
-    };
+
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
     return (
         <div className="browser-page">
             <Header />
-            {isOpen && <PopUp  game={{
-                image: "https://upload.wikimedia.org/wikipedia/en/f/f1/TombRaider2013.jpg",
-                title: "Tomb Raider",
-                genre: "Action RPG",
-                summary: "Tomb Raider is an action-adventure video game developed by Crystal Dynamics and published by Square Enix. It is a reboot of the Tomb Raider franchise, focusing on the origin story of the protagonist, Lara Croft. The game follows Lara as she embarks on a perilous journey to survive on a mysterious island filled with dangerous wildlife, hostile inhabitants, and ancient secrets. Players must navigate through challenging environments, solve puzzles, and engage in combat to uncover the island's mysteries and rescue her friends.",
-                features: ["Single-player campaign", "Exploration and puzzle-solving", "Combat against enemies", "Character progression and skill upgrades"],
-                systemRequirement: ["OS: Windows 7 64-bit", "Processor: Intel Core i3-2100 or AMD equivalent", "Memory: 4 GB RAM", "Graphics: NVIDIA GeForce GTX 650 or AMD Radeon HD 7770", "DirectX: Version 11", "Storage: 25 GB available space"]
+            {isOpen && <PopUp game={{
+                image: getIndiGame.background_image,
+                title: getIndiGame.name,
+                genre: getIndiGame.genres,
+                summary: getIndiGame.description_raw,
+                features: getIndiGame.tags,
+                platforms: getIndiGame.platforms,
+                id:getIndiGame.id
             }} closePopUp={handlePopupClose} />}
-            <GameCard game={game} opnePopUp={handlePopupOpen} />
+            <div style={{ display: "flex", justifyContent: "flex-start", alignContent: "center", flexWrap: "wrap", padding: 10, gap: 20 }}>
+                {game.map((game,index) => (<GameCard game={{ title: game.name, image: game.background_image, genre: game.genres, id: game.id }} openPopUp={handlePopupOpen} key={index}/>))}
+            </div>
         </div>
     );
 }

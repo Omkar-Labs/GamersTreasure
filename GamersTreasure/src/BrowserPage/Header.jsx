@@ -37,7 +37,7 @@ export default function Header() {
             </div>
             <div className="nav-links">
                 {pages.map((page) => (
-                    <span className="animate"><Link key={page} to={`#${page.toLowerCase()}`}>{page}</Link></span>
+                    <span className="animate" key={page}><Link key={page} to={`#${page.toLowerCase()}`}>{page}</Link></span>
                 ))}
             </div>
         </div>

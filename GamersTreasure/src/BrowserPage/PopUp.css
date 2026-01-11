@@ -1,15 +1,12 @@
 
 
 .popup-overlay{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
-    width: 80%;
+    height: 87vh;
+    width: 90%;
     background: #18181b;
     border-radius: 20px;
     padding: 10px;
@@ -52,8 +49,10 @@
 .game-features h2 {
     position: relative;
     bottom: 14px;
-    font-size: 3rem;
-    
+    font-size: 2.9rem;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 600;
     color:#ff4500 ;
@@ -66,27 +65,21 @@
     
     color: #cccccc;
 }
-.game-features ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 0;
 
-}
-.game-features li {
-    margin-bottom: 8px;
-}
-.game-features li::marker {
-    color: #ff4500;
-    font-size: 1.2rem;
-}
 .game-features h3 {
     margin-top: 5px;
     font-size: 1.5rem;
     color: #ff4500;
 }
+.game-features p{
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: #cccccc
+
+}
 
 .game-features {
-    width: 400px;
+    width: 484px;
     height: 100%;
     padding: 10px;
     display: flex;
@@ -94,7 +87,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     font-size: 1.1rem;
-    margin-left: 88px;
+    margin-left: 41px;
 }
 .popup-content {
     align-self: start;
@@ -140,18 +133,10 @@
     color:#ff4500 ;
     white-space: nowrap;
 }
-.popup-right ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 0;
-    font-size: 1.2rem;
 
-}
-.popup-right li {
-    margin-bottom: 8px;
+.popup-right p{
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin: 7px;
 
-}
-.popup-right li::marker {
-    color: #ff4500;
-    font-size: 1.2rem;
 }
