@@ -5,7 +5,8 @@ import PopUp from "./PopUp";
 import { useEffect, useState ,useCallback} from "react";
 
 import "./BrowserPage.css";
-import { data } from "react-router";
+import LodingPage from "./lodingPage";
+
 
 export default function BrowserPage() {
     const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +71,9 @@ export default function BrowserPage() {
     }
 
     if (isLoading) {
-        return <div>Loading...</div>
+        
+        return <LodingPage/>
+
     }
 
     return (
