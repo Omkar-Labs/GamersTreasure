@@ -27,7 +27,7 @@ export default function BackgroundImage() {
     })});
     return (
 
-        <div className="background-image" ref={img} >
+        <div className="background-image" ref={img}  style={{backgroundImage: "url('/bgimg.png')"}}>
             <h1 className="title-text">
                 Gamers Treasure
             </h1>
