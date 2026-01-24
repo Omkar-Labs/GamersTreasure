@@ -50,41 +50,25 @@ npm install
 
 # 4. Start development server
 npm start
-
+```
 ## 🧩 Project Highlights
--First real React project, focused on learning:
 
-    -Fetching data from a public API (RAWG)
-
-    -Managing component state and props
-
-    -Using react-router for multiple pages
-
-    -Handling click events (card → popup)
-
-    -Integrating animation (GSAP) and UI library (MUI) in a single app
-
--Clean separation of concerns:
-
-    -Game list view
-
-    -Individual game popup with extra details
-
-    -Reusable card components styled with MUI
-
+- First real **React project**, focused on learning:
+  - Fetching data from a public API (RAWG)
+  - Managing component state and props
+  - Using `react-router` for multiple pages
+  - Handling click events (card → popup)
+  - Integrating GSAP and MUI in one app
 
 ## 📌 Future Improvements
-    -Add filters (genre, platform, rating, release year)
 
-    -Add search and sorting options
-
-    -Add pagination or infinite scroll
-
-    -Improve responsive layout for mobile and tablet
-
-    -Add loading and error states for API calls
+- Add filters (genre, platform, rating, release year)
+- Add search and sorting options
+- Add pagination or infinite scroll
+- Improve responsive layout for mobile
+- Add loading and error states
 
 ## 🙋‍♂️ Author
 
-    -GamersTreasure is my first frontend project built with React and the RAWG API.
-     Feedback, suggestions, and PRs are welcome!
+GamersTreasure is my first frontend project built with React and the RAWG API.  
+Feedback, suggestions, and PRs are welcome!
