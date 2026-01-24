@@ -5,7 +5,7 @@ import PopUp from "./PopUp";
 import { useEffect, useState ,useCallback} from "react";
 
 import "./BrowserPage.css";
-import LodingPage from "./lodingPage";
+import LodingPage from "./LodingPage";
 
 
 export default function BrowserPage() {
