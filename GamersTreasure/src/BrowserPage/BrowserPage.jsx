@@ -2,21 +2,24 @@
 import Header from "./Header";
 import GameCard from "./GameCard";
 import PopUp from "./PopUp";
-import { useEffect, useState } from "react";
+import { useEffect, useState ,useCallback} from "react";
 
 import "./BrowserPage.css";
+import { data } from "react-router";
 
 export default function BrowserPage() {
     const [isOpen, setIsOpen] = useState(false);
     const [game, setGame] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [getIndiGame, setGetIndiGame] = useState({});
+    const [searchTerm, setSearchTerm] = useState('');
+    const apiKey = import.meta.env.VITE_API_KEY;
 
 
     useEffect(() => {
         const getGames = async () => {
             try {
-                const res = await fetch("https://api.rawg.io/api/games?key=Your_API_Key&offset=0&limit=4");
+                const res = await fetch(`https://api.rawg.io/api/games?key=${apiKey}&page_size=50`);
                 const data = await res.json();
                 setGame(data.results);     // <-- return the results
             } catch (err) {
@@ -28,9 +31,24 @@ export default function BrowserPage() {
         getGames()
 
     }, []);
+     const searchEngine = useCallback(async()=>{
+        fetch(`https://api.rawg.io/api/games?key=${apiKey}&platforms=4&search_precise=false&search_exact=true&search=${searchTerm}`)
+        .then((res)=>{
+            return res.json();
+        })
+        .then((res)=>{
+            setGame(res.results);
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+    },[searchTerm,game,setGame]);
+    useEffect(()=>{
+        searchEngine();
+    },[searchTerm]);
 
     const handlePopupOpen = (id) => {
-        const url = `https://api.rawg.io/api/games/${id}?key=Your_API_Key`;
+        const url = `https://api.rawg.io/api/games/${id}?key=${apiKey}`;
         const getIndiGames = async () => {
             try {
                 const res = await fetch(url);
@@ -57,7 +75,7 @@ export default function BrowserPage() {
 
     return (
         <div className="browser-page">
-            <Header />
+            <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             {isOpen && <PopUp game={{
                 image: getIndiGame.background_image,
                 title: getIndiGame.name,

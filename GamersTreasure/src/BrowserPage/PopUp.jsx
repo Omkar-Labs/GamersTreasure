@@ -3,6 +3,9 @@ import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 export default function PopUp({ game, closePopUp }) {
     const boxRef = useRef(null);
+    const arr = [...game.title];
+    console.log(arr);
+    console.log(arr.length);
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
 
@@ -31,7 +34,7 @@ export default function PopUp({ game, closePopUp }) {
                 <div className="popup-game">
                     <img src={game.image} alt={game.title} className="popup-game-image" />
                     <div className="game-features">
-                        <h2 className="popup-game-title">{game.title}</h2>
+                        <h2 className="popup-game-title" style={arr.length >=20?{fontSize:"3.5ch"}:{fontSize:"2.7rem"}}>{game.title}</h2>
                         <div style = {{display:"flex",alignContent:"center",justifyContent:"flex-start",flexWrap:"wrap",gap:5}}>{genres.map((ent, index) => (<p className="popup-game-genre" key={index}>{ent}</p>))}</div>
                         <h3>Features:</h3>
 

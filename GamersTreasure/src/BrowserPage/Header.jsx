@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
 import {Link} from 'react-router';
@@ -6,10 +6,11 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 
 
-export default function Header() {
+export default function Header({searchTerm , setSearchTerm}) {
     const pages = ['Genre', 'Library', 'Profile'];
-    const [searchTerm, setSearchTerm] = useState('');
+    
     const headerRef = useRef(null);
+     const apiKey = import.meta.env.VITE_API_KEY;
 
     useGSAP(() => { 
         gsap.from(".animate", {
@@ -24,10 +25,12 @@ export default function Header() {
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     }
+   
 
     return (
         <div className="header" ref={headerRef}> 
             <div className="logo animate" >
+                
                 <h1><Link to="/" style = {{textDecoration:"none",color: "#ff4500"}}>Gamers Treasure</Link></h1>
             </div>
             <div className="search-bar animate">
